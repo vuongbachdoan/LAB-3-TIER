@@ -5,7 +5,11 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 const app = express();
 
-app.use(cors());
+// Apply CORS middleware to allow all origins
+app.use(cors({
+  origin: '*', // Allow requests from any origin
+}));
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/v1/app", require("./routes"));
