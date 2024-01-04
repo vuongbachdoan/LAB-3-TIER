@@ -7,7 +7,9 @@ const app = express();
 
 // Apply CORS middleware to allow all origins
 app.use(cors({
-  origin: '*', // Allow requests from any origin
+  origin: '*', // Adjust for production security
+  methods: 'GET,POST,PUT,DELETE,PATCH,OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization'
 }));
 
 app.use(express.json());

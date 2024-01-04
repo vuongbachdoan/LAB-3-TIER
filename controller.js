@@ -2,6 +2,9 @@ const connection = require("./model");
 
 const todoController = {
     getAll: async (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust for production
+        res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH,OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         connection.query(
             "SELECT * FROM main.todos;",
             function (err, result, fields) {
@@ -12,6 +15,9 @@ const todoController = {
     },
 
     getOne: async (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust for production
+        res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH,OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         const id = req.params.id;
         connection.query(
             `SELECT * FROM main.todos WHERE id = ${id};`,
@@ -23,6 +29,9 @@ const todoController = {
     },
 
     deleteOne: async (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust for production
+        res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH,OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         const id = req.params.id;
         connection.query(
             `DELETE FROM main.todos WHERE id = ${id};`,
@@ -34,6 +43,9 @@ const todoController = {
     },
 
     updateOne: async (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust for production
+        res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH,OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         const id = req.params.id;
         const content = req.body.content;
         connection.query(
@@ -46,6 +58,9 @@ const todoController = {
     },
 
     create: async (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust for production
+        res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH,OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         const content = req.body.content;
         connection.query(
             `INSERT INTO main.todos (content) VALUES ('${content}');`,
